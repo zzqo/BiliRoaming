@@ -2313,7 +2313,7 @@ class BiliBiliPackage constructor(private val mClassLoader: ClassLoader, mContex
                     null,
                     -1,
                     null,
-                    null,
+                    longArrayOf(dexHelper.encodeClassIndex(Map::class.java)),
                     null,
                     true
                 ).asSequence().mapNotNull { dexHelper.decodeMethodIndex(it) }.firstOrNull()
