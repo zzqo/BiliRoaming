@@ -345,6 +345,11 @@ message CommentMenuCopy {
   optional Method action_handler = 3;
 }
 
+message SplashAd {
+  optional Class class = 1;
+  optional Method showSplash = 2;
+}
+
 message HookInfo {
   int64 last_update_time = 1;
   optional MapIds map_ids = 2;
@@ -419,4 +424,5 @@ message HookInfo {
   optional RewardAd rewardAd = 104;
   optional StoryPagerPlayer storyPagerPlayer = 105;
   optional CommentMenuCopy commentMenuCopy = 106;
+    optional SplashAd splashAd = 107;
 }

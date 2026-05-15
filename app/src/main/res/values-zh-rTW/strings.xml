@@ -15,6 +15,7 @@
     <string name="hide_icon_summary">不顯示本程式在啟動器中的圖示</string>
     <string name="custom_theme_title">自訂主題色</string>
     <string name="custom_theme_summary">新增自訂主題顏色的功能（需從我的右上角調色盤圖示進入）</string>
+    <string name="skip_splash_ad_title">跳過開屏廣告</string>
     <string name="teenagers_mode_dialog_title">關閉青少年模式跳出視窗</string>
     <string name="teenagers_mode_dialog_summary">仍可從側滑選單進入青少年模式</string>
     <string name="allow_download_title">允許下載版權番劇</string>

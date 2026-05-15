@@ -97,6 +97,7 @@ class XposedInit : XposedModule() {
                     startHook { ShareHook(classLoader) }
                     startHook { AutoLikeHook(classLoader) }
                     startHook { SettingHook(classLoader) }
+                    startHook { SplashAdHook(classLoader) }
                     startHook { SplashHook(classLoader) }
                     startHook { EnvHook(classLoader) }
                     startHook { DownloadThreadHook(classLoader) }

@@ -113,6 +113,11 @@
 
     <PreferenceCategory android:title="@string/miscellaneous_category">
         <SwitchPreference
+                android:key="skip_splash_ad"
+                android:summary="@string/skip_splash_ad_title"
+                android:title="@string/skip_splash_ad_title" />
+        
+        <SwitchPreference
             android:key="teenagers_mode_dialog"
             android:summary="@string/teenagers_mode_dialog_summary"
             android:title="@string/teenagers_mode_dialog_title" />
