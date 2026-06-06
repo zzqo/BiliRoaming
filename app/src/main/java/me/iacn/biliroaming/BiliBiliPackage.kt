@@ -376,8 +376,10 @@ class BiliBiliPackage constructor(private val mClassLoader: ClassLoader, mContex
     fun rewardFlag() = mHookInfo.rewardAd.rewardFlag.orNull
 
     fun addVideo() = mHookInfo.storyPagerPlayer.addVideo.orNull
-    
-    fun showSplash() = mHookInfo.splashAd.showSplash.orNull
+
+    fun showBrandSplash() = mHookInfo.splashAd.showBrandSplash.orNull
+
+    fun showAdSplash() = mHookInfo.splashAd.showAdSplash.orNull
 
     private fun readHookInfo(context: Context): Configs.HookInfo {
         try {
@@ -2457,7 +2459,8 @@ class BiliBiliPackage constructor(private val mClassLoader: ClassLoader, mContex
             splashAd = splashAd {
                 val mainActivityV2Class = "tv.danmaku.bili.MainActivityV2".from(classloader) ?: return@splashAd
                 class_ = class_ { name = mainActivityV2Class.name }
-                val showSplashMethod = dexHelper.findMethodUsingString(
+                
+                val showBrandSplashMethod = dexHelper.findMethodUsingString(
                     "show event splash",
                     false,
                     dexHelper.encodeClassIndex(Boolean::class.java),
@@ -2471,8 +2474,25 @@ class BiliBiliPackage constructor(private val mClassLoader: ClassLoader, mContex
                 ).asSequence().mapNotNull {
                     dexHelper.decodeMethodIndex(it)
                 }.firstOrNull() ?: return@splashAd
+                showBrandSplash = method { name = showBrandSplashMethod.name }
 
-                showSplash = method { name = showSplashMethod.name }
+                val splashClass = "tv.danmaku.bili.ui.splash.ad.model.Splash".from(classloader)
+                    ?: return@splashAd
+                val showAdSplashMethod = dexHelper.findMethodUsingString(
+                    "show splash ",
+                    false,
+                    dexHelper.encodeClassIndex(Boolean::class.java),
+                    2,
+                    null,
+                    dexHelper.encodeClassIndex(mainActivityV2Class),
+                    null,
+                    longArrayOf(dexHelper.encodeClassIndex(splashClass), dexHelper.encodeClassIndex(Boolean::class.java)),
+                    null,
+                    true
+                ).asSequence().mapNotNull {
+                    dexHelper.decodeMethodIndex(it)
+                }.firstOrNull() ?: return@splashAd
+                showAdSplash = method { name = showAdSplashMethod.name }
             }
 
             dexHelper.close()

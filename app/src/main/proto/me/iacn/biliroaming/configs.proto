@@ -347,7 +347,8 @@ message CommentMenuCopy {
 
 message SplashAd {
   optional Class class = 1;
-  optional Method showSplash = 2;
+  optional Method showBrandSplash = 2;
+  optional Method showAdSplash = 3;
 }
 
 message HookInfo {
